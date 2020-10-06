@@ -18,5 +18,12 @@ CREATE TABLE CampSites(
   description TEXT (10000) not Null,
   review TEXT (10000) not Null,
   responses TEXT not Null,
-  recommended TEXT not Null
+  recommended TEXT not Null,
+  Parks TEXT not Null,
+  Lodging TEXT not Null,
+  Essentials TEXT not Null,
+  Amentities TEXT not Null,
+  Owners TEXT not Null,
+  photosOfResponsers TEXT not Null,
+  cancellation TEXT not Null
 );
