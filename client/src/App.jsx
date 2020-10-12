@@ -79,7 +79,7 @@ class App extends React.Component {
       month: this.state.today.getMonth(),
       year: this.state.today.getFullYear()
     })
-    axios.get(`http://localhost:3002/one/${this.state.id}`)
+    axios.get(`/one/${this.state.id}`)
       .then((results) => {
         this.setState({
           campsites: results.data,
@@ -368,26 +368,26 @@ class App extends React.Component {
 
                   <Calendar onChange={this.onChange} showNeighboringMonth={false} value={this.state.date} tileDisabled={({activeStartDate, date}) =>{
                     if(this.state.checkin === true){
-                      console.log(this.state.day)
                       for(var a = 1; a < this.state.month; a++){
-                        if(date.getMonth() === a){
+                        if(date.getMonth() === a && date.getYear() <= this.state.year){
                           return true;
                         }
                       }
 
-                      if(date.getMonth() === this.state.month) {
+                      if(date.getMonth() === this.state.month && date.getYear() <= this.state.year) {
                         for(var j = 1; j < this.state.day; j++) {
-                          if(date.getDate() === j ){
+                          if(date.getDate() === j){
                             return true;
                           }
                         }
                       }
                       for(var i = Math.floor(Math.random() * (20) + 0); i > 0; i--){
-                        if(date.getDate() === Math.floor(Math.random() * (30) + 1)) {
+                        if(date.getDate() === Math.floor(Math.random() * (30) + 1) && date.getYear() <= this.state.year) {
                           return true;
                         }
                       }
                     }
+
                     if(this.state.checkout === true){
                       for (var a = 1; a < this.state.month; a++) {
                         if (date.getMonth() === a) {
@@ -403,7 +403,7 @@ class App extends React.Component {
                       }
 
                       for(var c = 1; c < this.state.checkInDate.getDate(); c++) {
-                        if(date.getDate() === c && date.getMonth() <= this.state.checkInDate.getMonth()){
+                        if(date.getDate() === c && date.getMonth() <= this.state.checkInDate.getMonth() && date.getYear() <= this.state.checkInDate.getYear()){
                            return true;
                         }
 
